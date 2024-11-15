@@ -2,6 +2,7 @@ package com.mycompany.app;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +16,7 @@ public class CalculadoraTest {
     }
 
     @Test
-    void testDividirAMemoria() throws Exception {
+    void testDividir_AMemoria() throws Exception {
         Calculadora cut = new Calculadora();
         double resultado = cut.dividir(10, 5);
         resultado = cut.dividir(2);
@@ -31,7 +32,7 @@ public class CalculadoraTest {
     }
 
     @Test
-    void testMultiplicarAMemoria() {
+    void testMultiplicar_AMemoria() {
         Calculadora cut = new Calculadora();
         double resultado = cut.multiplicar(10, 5);
         resultado = cut.multiplicar(2);
@@ -41,39 +42,39 @@ public class CalculadoraTest {
 
     @Test
     void testRestar() {
-        Calculadora calculadora = new Calculadora();
-        double resultadoSuma = calculadora.restar(34, 5.5);
+        Calculadora cut = new Calculadora();
+        double resultadoSuma = cut.restar(34, 5.5);
         assertEquals(28.5, resultadoSuma);
     }
 
     @Test
-    void testRestarAMemoria() {
-        Calculadora calculadora = new Calculadora();
-        double resultadoResta = calculadora.restar(-9);
-        resultadoResta = calculadora.restar(5);
-        resultadoResta = calculadora.restar(5);
+    void testRestar_AMemoria() {
+        Calculadora cut = new Calculadora();
+        double resultadoResta = cut.restar(-9);
+        resultadoResta = cut.restar(5);
+        resultadoResta = cut.restar(5);
         assertEquals(-1, resultadoResta);
 
     }
 
     @Test
     void testSumar() {
-        Calculadora calculadora = new Calculadora();
-        double resultadoSuma = calculadora.sumar(34, 5.5);
+        Calculadora cut = new Calculadora();
+        double resultadoSuma = cut.sumar(34, 5.5);
         assertEquals(39.5, resultadoSuma);
     }
 
     @Test
-    void testSumarAMemoria() {
-        Calculadora calculadora = new Calculadora();
-        double resultado = calculadora.sumar(8);
-        resultado = calculadora.sumar(22);
-        resultado = calculadora.sumar(22);
+    void testSumar_AMemoria() {
+        Calculadora cut = new Calculadora();
+        double resultado = cut.sumar(8);
+        resultado = cut.sumar(22);
+        resultado = cut.sumar(22);
         assertEquals(52, resultado);
     }
 
     @Test
-    void testDivisorCero() throws Exception {
+    void testDividir_DivisorCero() throws Exception {
         Calculadora cut = new Calculadora();
         assertThrows(Exception.class, () -> cut.dividir(10, 0));
         cut.sumar(1, 5);
@@ -82,11 +83,20 @@ public class CalculadoraTest {
     }
 
     @Test
-    void testBorrarMemoria () {
+    void testBorrarMemoria() {
         Calculadora cut = new Calculadora();
         assertEquals(0, cut.getMemoria());
         cut.sumar(4, 16);
         cut.multiplicar(3);
         assertEquals(60, cut.getMemoria());
+        cut.borrarMemoria();
+        assertEquals(0, cut.getMemoria());
+
+    }
+
+    @Test
+    void testFactorial() {
+        Calculadora cut = new Calculadora();
+        assertEquals(40320, cut.factorial(8));
     }
 }

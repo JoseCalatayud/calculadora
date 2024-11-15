@@ -8,58 +8,69 @@ public class Calculadora {
     }
 
     public double sumar(double numero1, double numero2) throws IllegalArgumentException {
-        resultadoEnMemoria = numero1 +numero2;
+        this.resultadoEnMemoria = numero1 + numero2;
         return resultadoEnMemoria;
     }
 
     public double sumar(double numero) throws IllegalArgumentException {
-        resultadoEnMemoria += numero;
+        this.resultadoEnMemoria += numero;
         return resultadoEnMemoria;
     }
 
     public double restar(double numero1, double numero2) throws IllegalArgumentException {
-        resultadoEnMemoria = numero1 - numero2;
+        this.resultadoEnMemoria = numero1 - numero2;
         return resultadoEnMemoria;
     }
 
-    public double restar( double numero) throws IllegalArgumentException{
-        resultadoEnMemoria-=numero;
+    public double restar(double numero) throws IllegalArgumentException {
+        this.resultadoEnMemoria -= numero;
         return resultadoEnMemoria;
     }
 
-    public double dividir ( double numero1, double numero2) throws Exception, IllegalArgumentException {
-        if (numero2 == 0){
+    public double dividir(double numero1, double numero2) throws Exception, IllegalArgumentException {
+        if (numero2 == 0) {
             throw new Exception("El divisor no puede ser 0");
         }
-        resultadoEnMemoria = numero1 / numero2;
+        this.resultadoEnMemoria = numero1 / numero2;
         return resultadoEnMemoria;
     }
 
-    public double dividir (double numero) throws Exception , IllegalArgumentException{
-        if(numero==0){
+    public double dividir(double numero) throws Exception, IllegalArgumentException {
+        if (numero == 0) {
             throw new Exception("El divisor no puede ser 0");
         }
-        resultadoEnMemoria /= numero;
+        this.resultadoEnMemoria /= numero;
         return resultadoEnMemoria;
 
     }
 
-    public double multiplicar ( double numero1, double numero2) throws IllegalArgumentException{
-        resultadoEnMemoria = numero1 * numero2;
+    public double multiplicar(double numero1, double numero2) throws IllegalArgumentException {
+        this.resultadoEnMemoria = numero1 * numero2;
         return resultadoEnMemoria;
     }
 
-    public double multiplicar(double numero) throws IllegalArgumentException{
-        resultadoEnMemoria *= numero;
+    public double multiplicar(double numero) throws IllegalArgumentException {
+        this.resultadoEnMemoria *= numero;
         return resultadoEnMemoria;
+    }
+    
+    public double factorial (double numero){
+        this.resultadoEnMemoria = factorialRecursivo(numero);
+        return resultadoEnMemoria;
+    }
+
+    private double factorialRecursivo (double numero){
+        if (numero == 1){
+            return 1;
+        }
+        return numero*factorial(numero - 1);
+    }
+
+    public void borrarMemoria() {
+        this.resultadoEnMemoria = 0;
     }
 
     public double getMemoria() {
         return resultadoEnMemoria;
     }
-
-    public void borrarMemoria () {
-        resultadoEnMemoria = 0;
-    }
-
 }
